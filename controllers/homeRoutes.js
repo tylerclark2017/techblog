@@ -9,13 +9,14 @@ router.get('/', async (req, res) => {
       order: [['name', 'ASC']],
     });
 
-    // Serialize user data so templates can read it
-    const users = userData.map((project) => project.get({ plain: true }));
+    // Serialize user data for templates
+    const users = userData.map(user => user.get({ plain: true }));
 
-    // Pass serialized data into Handlebars.js template
+    // Render the homepage view with user data
     res.render('homepage', { users });
   } catch (err) {
-    res.status(500).json(err);
+    console.error('Error fetching user data:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

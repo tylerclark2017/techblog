@@ -1,0 +1,17 @@
+[
+    {
+        "name": "John Doe",
+        "email": "john.doe@gmail.com",
+        "password": "password123"
+    },
+    {
+        "name": "Jane Smith",
+        "email": "jane.smith@gmail.com",
+        "password": "securepass456"
+    },
+    {
+        "name": "Tyler Clark",
+        "email": "tylerclark@gmail.com",
+        "password": "thisclassrocks"
+    }
+]
