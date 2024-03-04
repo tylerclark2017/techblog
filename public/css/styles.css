@@ -1,0 +1,48 @@
+/* Color Scheme */
+body {
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* Typography */
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+/* Buttons and Links */
+.button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+/* Forms */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    /* Adjust styles for smaller screens */
+    h1 {
+        font-size: 20px;
+    }
+}
