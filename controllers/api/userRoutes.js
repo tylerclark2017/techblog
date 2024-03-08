@@ -3,10 +3,6 @@ const router = express.Router();
 
 // Define routes for users
 
-router.post('/', usersController.createUser); // Corrected function reference
-router.post('/login', usersController.login); // Corrected function reference
-router.post('/logout', usersController.logout); // Corrected function reference
-
 const usersController = {
     // Login (refactor this and logout to match below functions)
     login: async (req, res) => {
@@ -71,6 +67,10 @@ const usersController = {
     },
     // Add more controller methods as needed
 };
+
+router.post('/', usersController.createUser); // Corrected function reference
+router.post('/login', usersController.login); // Corrected function reference
+router.post('/logout', usersController.logout); // Corrected function reference
 
 // Add more routes as needed
 
