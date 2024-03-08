@@ -3,10 +3,10 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
 const Sequelize = require('sequelize');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const dotenv = require('dotenv');
 const bcrypt = require('bcrypt');
 const path = require('path');
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -17,6 +17,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     dialect: 'mysql',
 });
 
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
 // Load models
 const User = require('./models/User');
 
@@ -25,21 +27,22 @@ const hbs = exphbs.create({
     extname: '.hbs',
     defaultLayout: 'main',
     layoutsDir: path.join(__dirname, 'views/layouts'),
-    partialsDir: path.join(__dirname, 'views/partials'),
+    // partialsDir: path.join(__dirname, 'views/partials'),
 });
 
 // Create Express app
 const app = express();
 
-// Configure session middleware
-app.use(session({
-    secret: process.env.SESSION_SECRET,
+const sessionConfig = {
+    secret: 'Secret Key Found Here!',
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize,
     }),
-}));
+}
+// Configure session middleware
+app.use(session(sessionConfig));
 
 // Set up Handlebars as the view engine
 app.engine('hbs', hbs.engine);
@@ -47,10 +50,10 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something is wrong!');
-});
+// app.use((err, req, res, next) => {
+//     console.error(err.stack);
+//     res.status(500).send('Something is wrong!');
+// });
 
 // Logging middleware
 app.use((req, res, next) => {
@@ -65,16 +68,13 @@ app.use(express.urlencoded({ extended: true }));
 // Static files middleware
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Secure HTTP headers
-app.use(helmet());
-
 // Define routes and controllers
 
 // Import routes
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./controllers/api/userRoutes');
 app.use('/users', userRoutes);
 
-const postRoutes = require('./routes/postRoutes');
+const postRoutes = require('./controllers/api/postRoutes');
 app.use('/posts', postRoutes);
 
 // Start the server

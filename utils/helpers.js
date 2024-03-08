@@ -23,6 +23,7 @@ const validateUsernameCase = (username) => {
     return username.toLowerCase() !== username.toUpperCase();
 };
 
+// authentication middleware can go here
 
 module.exports = {
     formatName,
