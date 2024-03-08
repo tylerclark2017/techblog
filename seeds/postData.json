@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Test 1",
+        "content": "This is the first test message, hello world!",
+        "user_id": "1"
+    },
+    {
+        "title": "HTML",
+        "content": "Static and Dynamic HTML through Handlebars is great!",
+        "user_id": "1"
+    },
+    {
+        "title": "MVC",
+        "content": "The MVC file structure helps to keep things so organized!",
+        "user_id": "1"
+    }
+]
