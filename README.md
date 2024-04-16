@@ -13,4 +13,4 @@ I utilized the code from week 14, activity 17 to create login/logout routes. I a
 
 Here is the link to my GitHub repo: https://github.com/tylerclark2017/techblog
 
-Here is the link to the deployed Heroku application: 
+Here is the link to the deployed Heroku application: https://radiant-dusk-84784-68f84cdf80db.herokuapp.com/
